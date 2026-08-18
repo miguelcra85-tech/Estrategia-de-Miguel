@@ -8,6 +8,24 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="src/index.css">
+  <style>
+    /* Estilos para evitar desbordamiento al incrustar en Looker Studio / iFrames */
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    .content-wrapper {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    img, svg, video, canvas {
+      max-width: 100%;
+    }
+    /* Se mantiene la excepción para el fondo en pantalla completa */
+    .video-layer {
+      max-width: none;
+    }
+  </style>
 </head>
 <body class="relative-root">
   <!-- Scroll Video Background Layer -->
@@ -249,6 +267,6 @@
       });
     });
   </script>
-  <script type="module" src="/src/main.tsx"></script>
+  <script type="module" src="src/main.tsx"></script>
 </body>
 </html>
