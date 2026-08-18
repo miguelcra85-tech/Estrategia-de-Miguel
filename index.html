@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./style.css">
   <style>
     /* Estilos para evitar desbordamiento al incrustar en Looker Studio / iFrames */
     html, body {
@@ -241,33 +241,40 @@
     </svg>
   </a>
   </div> <!-- /content-wrapper -->
-  <script type="module">
-    import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0/dist/web.js'
+  <script>
+    (async function initTypebot() {
+      try {
+        const module = await import('https://unpkg.com/@typebot.io/js@0.3/dist/web.js');
+        const Typebot = module.default;
 
-    Typebot.initBubble({
-      typebot: "open-ai-assistant-chat-kiw7cer",
-      previewMessage: {
-        message: "Marketing Strategy",
-        avatarUrl:
-          "https://res.cloudinary.com/hw31kdln/image/upload/v1784343906/Escudo_touch_icon_for_migue_strategy._the_design_features_a_polished_huvvlo.webp",
-      },
-      theme: {
-        placement: "left",
-        button: {
-          backgroundColor: "#1D1D1D",
-          customIconSrc:
-            "https://res.cloudinary.com/hw31kdln/image/upload/v1784343906/Escudo_touch_icon_for_migue_strategy._the_design_features_a_polished_huvvlo.webp",
-        },
-      },
-    });
+        Typebot.initBubble({
+          typebot: "open-ai-assistant-chat-kiw7cer",
+          previewMessage: {
+            message: "Marketing Strategy",
+            avatarUrl:
+              "https://res.cloudinary.com/hw31kdln/image/upload/v1784343906/Escudo_touch_icon_for_migue_strategy._the_design_features_a_polished_huvvlo.webp",
+          },
+          theme: {
+            placement: "left",
+            button: {
+              backgroundColor: "#1D1D1D",
+              customIconSrc:
+                "https://res.cloudinary.com/hw31kdln/image/upload/v1784343906/Escudo_touch_icon_for_migue_strategy._the_design_features_a_polished_huvvlo.webp",
+            },
+          },
+        });
 
-    document.querySelectorAll('.btn-join-nav, .btn-primary, .btn-cta').forEach(button => {
-      button.addEventListener('click', (e) => {
-        e.preventDefault();
-        Typebot.open();
-      });
-    });
+        document.querySelectorAll('.btn-join-nav, .btn-primary, .btn-cta').forEach(button => {
+          button.addEventListener('click', (e) => {
+            e.preventDefault();
+            Typebot.open();
+          });
+        });
+      } catch (error) {
+        console.warn('Typebot no pudo cargar, el sitio principal sigue funcionando.', error);
+      }
+    })();
   </script>
-  <script src="script.js"></script>
+  <script src="./script.js"></script>
 </body>
 </html>
